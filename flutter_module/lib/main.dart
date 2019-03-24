@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:flutter_module/correct_wrong_overlay.dart';
 
 void main() => runApp(chooseWidget(window.defaultRouteName));
 
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   .textTheme
                   .display1,
             ),
+            CorrectWrongOverlay()
           ],
         ),
       ),
