@@ -55,26 +55,42 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Text(
               'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .display1,
-            ),
-            CorrectWrongOverlay()
+              style: Theme.of(context).textTheme.display1,
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: Increment(_incrementCounter),
+    );
+  }
+}
+
+class Increment extends StatefulWidget {
+  Function mIncrement;
+
+  @override
+  State createState() {
+    return IncrementState();
+  }
+
+  Increment(Function incrementCounter) {
+    this.mIncrement = incrementCounter;
+  }
+}
+
+class IncrementState extends State<Increment> {
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: widget.mIncrement,
+      tooltip: 'Increment',
+      child: Icon(Icons.add),
     );
   }
 }
